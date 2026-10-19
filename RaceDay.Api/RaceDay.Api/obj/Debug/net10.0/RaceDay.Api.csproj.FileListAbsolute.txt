@@ -164,3 +164,4 @@ C:\Users\emeris\Documents\-PROG6221-RaceDay-ST10450884-main\RaceDay-Part2\RaceDa
 C:\Users\emeris\Documents\-PROG6221-RaceDay-ST10450884-main\RaceDay-Part2\RaceDay.Api\RaceDay.Api\obj\Debug\net10.0\RaceDay.Api.pdb
 C:\Users\emeris\Documents\-PROG6221-RaceDay-ST10450884-main\RaceDay-Part2\RaceDay.Api\RaceDay.Api\obj\Debug\net10.0\RaceDay.Api.genruntimeconfig.cache
 C:\Users\emeris\Documents\-PROG6221-RaceDay-ST10450884-main\RaceDay-Part2\RaceDay.Api\RaceDay.Api\obj\Debug\net10.0\ref\RaceDay.Api.dll
+C:\Users\emeris\Documents\-PROG6221-RaceDay-ST10450884-main\RaceDay-Part2\RaceDay.Api\RaceDay.Api\obj\Debug\net10.0\RaceDay.Api.sourcelink.json
