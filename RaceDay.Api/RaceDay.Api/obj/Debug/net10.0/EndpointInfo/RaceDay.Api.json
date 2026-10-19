@@ -357,6 +357,8 @@
             "format": "int32"
           },
           "organiserId": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
@@ -366,6 +368,7 @@
           },
           "name": {
             "maxLength": 150,
+            "minLength": 2,
             "type": "string"
           },
           "description": {
@@ -400,6 +403,8 @@
             "format": "date-time"
           },
           "maxParticipants": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "pattern": "^-?(?:0|[1-9]\\d*)$",
             "type": [
               "integer",
