@@ -17,6 +17,27 @@ namespace RaceDay.Api.Controllers
             _context = context;
         }
 
+
+        // GET: api/Events/1
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Event>> GetEvent(int id)
+        {
+            var eventItem = await _context.Events
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.EventId == id);
+
+            if (eventItem == null)
+            {
+                return NotFound(new
+                {
+                    message = $"Event with ID {id} was not found."
+                });
+            }
+
+            return Ok(eventItem);
+        }
+
+
         // GET: api/Events
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
