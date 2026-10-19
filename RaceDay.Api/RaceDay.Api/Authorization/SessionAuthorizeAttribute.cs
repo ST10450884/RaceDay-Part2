@@ -30,9 +30,15 @@ public class SessionAuthorizeAttribute : Attribute, IAsyncAuthorizationFilter
         }
 
         if (_requiredRole != null &&
-            !string.Equals(userRole, _requiredRole, StringComparison.OrdinalIgnoreCase))
+     !string.Equals(userRole, _requiredRole, StringComparison.OrdinalIgnoreCase))
         {
-            context.Result = new ForbidResult();
+            context.Result = new ObjectResult(new
+            {
+                message = "You do not have permission to access this resource."
+            })
+            {
+                StatusCode = StatusCodes.Status403Forbidden
+            };
 
             return Task.CompletedTask;
         }
