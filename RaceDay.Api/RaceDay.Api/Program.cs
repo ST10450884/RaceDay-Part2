@@ -12,6 +12,16 @@ namespace RaceDay.Api
 
             builder.Services.AddControllers();
 
+            builder.Services.AddDistributedMemoryCache();
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+            });
+
             // Configure the SQL Server database connection.
             builder.Services.AddDbContext<RaceDayDbContext>(options =>
                 options.UseSqlServer(
@@ -21,6 +31,7 @@ namespace RaceDay.Api
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
+            app.UseSession();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

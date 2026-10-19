@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RaceDay.Api.Data;
 using RaceDay.Api.Models;
+using RaceDay.Api.Authorization;
 
 namespace RaceDay.Api.Controllers
 {
@@ -50,6 +51,7 @@ namespace RaceDay.Api.Controllers
         }
 
         // POST: api/Events
+        [SessionAuthorize("Organiser")]
         [HttpPost]
         public async Task<ActionResult<Event>> CreateEvent(Event eventItem)
         {
@@ -94,11 +96,12 @@ namespace RaceDay.Api.Controllers
                 nameof(GetEvent),
                 new { id = eventItem.EventId },
                 eventItem);
-        }
-        // PUT: api/Events/1
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateEvent(int id, Event updatedEvent)
-        {
+            }
+            // PUT: api/Events/1
+            [SessionAuthorize("Organiser")]
+            [HttpPut("{id:int}")]
+            public async Task<IActionResult> UpdateEvent(int id, Event updatedEvent)
+            {
             var existingEvent = await _context.Events.FindAsync(id);
 
             if (existingEvent == null)
