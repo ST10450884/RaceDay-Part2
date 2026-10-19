@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\controllers\\routescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\controllers\\routescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\route.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\route.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,6 +35,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "RoutesController.cs",
+              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\RoutesController.cs",
+              "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\RoutesController.cs",
+              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\RoutesController.cs",
+              "RelativeToolTip": "RaceDay.Api\\Controllers\\RoutesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T16:21:11.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Route.cs",
+              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Route.cs",
+              "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Route.cs",
+              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Route.cs",
+              "RelativeToolTip": "RaceDay.Api\\Models\\Route.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T16:20:22.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Event.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Event.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Event.cs",
@@ -39,7 +73,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "EventsController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\EventsController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\EventsController.cs",
