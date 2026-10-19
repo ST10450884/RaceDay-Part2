@@ -95,6 +95,67 @@ namespace RaceDay.Api.Controllers
                 new { id = eventItem.EventId },
                 eventItem);
         }
+        // PUT: api/Events/1
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateEvent(int id, Event updatedEvent)
+        {
+            var existingEvent = await _context.Events.FindAsync(id);
 
+            if (existingEvent == null)
+            {
+                return NotFound(new
+                {
+                    message = $"Event with ID {id} was not found."
+                });
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (updatedEvent.RegistrationCloseDate >= updatedEvent.EventDate)
+            {
+                return BadRequest(new
+                {
+                    message = "Registration close date must be before the event date."
+                });
+            }
+
+            if (updatedEvent.MaxParticipants <= 0)
+            {
+                return BadRequest(new
+                {
+                    message = "Maximum participants must be greater than zero."
+                });
+            }
+
+            var validEventTypes = new[] { "Running", "Walking", "Cycling" };
+
+            if (!validEventTypes.Contains(updatedEvent.EventType))
+            {
+                return BadRequest(new
+                {
+                    message = "Event type must be Running, Walking, or Cycling."
+                });
+            }
+
+            existingEvent.OrganiserId = updatedEvent.OrganiserId;
+            existingEvent.Name = updatedEvent.Name;
+            existingEvent.Description = updatedEvent.Description;
+            existingEvent.EventType = updatedEvent.EventType;
+            existingEvent.EventDate = updatedEvent.EventDate;
+            existingEvent.Venue = updatedEvent.Venue;
+            existingEvent.City = updatedEvent.City;
+            existingEvent.Province = updatedEvent.Province;
+            existingEvent.RegistrationCloseDate = updatedEvent.RegistrationCloseDate;
+            existingEvent.MaxParticipants = updatedEvent.MaxParticipants;
+            existingEvent.Status = updatedEvent.Status;
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+
+        }
     }
 }
