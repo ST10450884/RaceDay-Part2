@@ -72,9 +72,9 @@
               "target": "Package",
               "version": "[10.0.13, )"
             },
-            "Microsoft.Extensions.Identity.Core": {
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[10.0.13, )"
+              "version": "[10.3.1, )"
             },
             "System.Security.Cryptography.Pkcs": {
               "target": "Package",

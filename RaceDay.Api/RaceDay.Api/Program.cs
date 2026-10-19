@@ -27,16 +27,17 @@ namespace RaceDay.Api
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("RaceDayConnection")));
 
-            // OpenAPI configuration.
-            builder.Services.AddOpenApi();
+           
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
             app.UseSession();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

@@ -1,17 +1,9 @@
 {
-  "openapi": "3.1.1",
+  "openapi": "3.0.4",
   "info": {
-    "title": "RaceDay.Api | v1",
-    "version": "1.0.0"
+    "title": "RaceDay.Api",
+    "version": "1.0"
   },
-  "servers": [
-    {
-      "url": "https://localhost:7029"
-    },
-    {
-      "url": "http://localhost:5087"
-    }
-  ],
   "paths": {
     "/api/Auth/register": {
       "post": {
@@ -35,8 +27,7 @@
                 "$ref": "#/components/schemas/RegisterRequest"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -67,8 +58,7 @@
                 "$ref": "#/components/schemas/LoginRequest"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -125,6 +115,52 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Enrolments"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEnrolmentRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEnrolmentRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEnrolmentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Enrolment"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Enrolment"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Enrolment"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/Enrolments/{id}": {
@@ -138,7 +174,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -161,6 +196,82 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Enrolment"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Enrolments/my": {
+      "get": {
+        "tags": [
+          "Enrolments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Enrolment"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Enrolment"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Enrolment"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Enrolments/organiser": {
+      "get": {
+        "tags": [
+          "Enrolments"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Enrolment"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Enrolment"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Enrolment"
+                  }
                 }
               }
             }
@@ -204,6 +315,52 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "EventCategories"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventCategory"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventCategory"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventCategory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventCategory"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventCategory"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventCategory"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/EventCategories/{id}": {
@@ -217,7 +374,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -245,6 +401,67 @@
             }
           }
         }
+      },
+      "put": {
+        "tags": [
+          "EventCategories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventCategory"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventCategory"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventCategory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "EventCategories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/Events/{id}": {
@@ -258,7 +475,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -297,7 +513,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -320,8 +535,7 @@
                 "$ref": "#/components/schemas/Event"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -339,7 +553,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -410,8 +623,7 @@
                 "$ref": "#/components/schemas/Event"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -469,8 +681,7 @@
                 "$ref": "#/components/schemas/UserProfile"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -501,8 +712,7 @@
                 "$ref": "#/components/schemas/UserProfile"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
@@ -547,6 +757,52 @@
             }
           }
         }
+      },
+      "post": {
+        "tags": [
+          "Results"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Result"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Result"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Result"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Result"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/api/Results/{id}": {
@@ -560,7 +816,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -586,6 +841,67 @@
                 }
               }
             }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Results"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Result"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Result"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Result"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Results"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -639,7 +955,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -718,7 +1033,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -797,7 +1111,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -915,7 +1228,6 @@
             "in": "path",
             "required": true,
             "schema": {
-              "pattern": "^-?(?:0|[1-9]\\d*)$",
               "type": "integer",
               "format": "int32"
             }
@@ -948,36 +1260,51 @@
   },
   "components": {
     "schemas": {
-      "Enrolment": {
+      "CreateEnrolmentRequest": {
         "required": [
-          "status",
           "emergencyContactName",
           "emergencyContactPhone"
         ],
         "type": "object",
         "properties": {
+          "categoryId": {
+            "maximum": 2147483647,
+            "minimum": 1,
+            "type": "integer",
+            "format": "int32"
+          },
+          "emergencyContactName": {
+            "maxLength": 160,
+            "minLength": 1,
+            "type": "string"
+          },
+          "emergencyContactPhone": {
+            "maxLength": 20,
+            "minLength": 1,
+            "type": "string",
+            "format": "tel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Enrolment": {
+        "required": [
+          "emergencyContactName",
+          "emergencyContactPhone",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
           "enrolmentId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "categoryId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "participantId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "enrolledAtUtc": {
@@ -986,75 +1313,50 @@
           },
           "status": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "emergencyContactName": {
             "maxLength": 160,
+            "minLength": 1,
             "type": "string"
           },
           "emergencyContactPhone": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "category": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/EventCategory"
-              }
-            ]
+            "$ref": "#/components/schemas/EventCategory"
           },
           "participant": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/User"
-              }
-            ]
+            "$ref": "#/components/schemas/User"
           },
           "result": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/Result"
-              }
-            ]
+            "$ref": "#/components/schemas/Result"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Event": {
         "required": [
-          "name",
-          "eventType",
-          "venue",
           "city",
+          "eventType",
+          "name",
           "province",
-          "status"
+          "status",
+          "venue"
         ],
         "type": "object",
         "properties": {
           "eventId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "organiserId": {
             "maximum": 2147483647,
             "minimum": 1,
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "name": {
@@ -1064,13 +1366,12 @@
           },
           "description": {
             "maxLength": 1000,
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "nullable": true
           },
           "eventType": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "eventDate": {
@@ -1079,14 +1380,17 @@
           },
           "venue": {
             "maxLength": 150,
+            "minLength": 1,
             "type": "string"
           },
           "city": {
             "maxLength": 100,
+            "minLength": 1,
             "type": "string"
           },
           "province": {
             "maxLength": 50,
+            "minLength": 1,
             "type": "string"
           },
           "registrationCloseDate": {
@@ -1096,15 +1400,12 @@
           "maxParticipants": {
             "maximum": 2147483647,
             "minimum": 1,
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "status": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "createdAtUtc": {
@@ -1112,38 +1413,27 @@
             "format": "date-time"
           },
           "organiser": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/User"
-              }
-            ]
+            "$ref": "#/components/schemas/User"
           },
           "route": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/Route"
-              }
-            ]
+            "$ref": "#/components/schemas/Route"
           },
           "categories": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/EventCategory"
-            }
+            },
+            "nullable": true
           },
           "weatherSnapshots": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/WeatherSnapshot"
-            }
+            },
+            "nullable": true
           }
-        }
+        },
+        "additionalProperties": false
       },
       "EventCategory": {
         "required": [
@@ -1152,78 +1442,50 @@
         "type": "object",
         "properties": {
           "categoryId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "eventId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "name": {
             "maxLength": 100,
+            "minLength": 1,
             "type": "string"
           },
           "distanceKm": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ],
+            "type": "number",
             "format": "double"
           },
           "fee": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ],
+            "type": "number",
             "format": "double"
           },
           "minimumAge": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "capacity": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "startTime": {
-            "pattern": "^-?(\\d+\\.)?\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,7})?$",
-            "type": "string"
+            "type": "string",
+            "format": "date-span"
           },
           "event": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/Event"
-              }
-            ]
+            "$ref": "#/components/schemas/Event"
           },
           "enrolments": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Enrolment"
-            }
+            },
+            "nullable": true
           }
-        }
+        },
+        "additionalProperties": false
       },
       "LoginRequest": {
         "required": [
@@ -1233,35 +1495,37 @@
         "type": "object",
         "properties": {
           "email": {
-            "type": "string"
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
           },
           "password": {
+            "minLength": 1,
             "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "RegisterRequest": {
         "required": [
           "email",
-          "password",
-          "role"
+          "password"
         ],
         "type": "object",
         "properties": {
           "email": {
             "maxLength": 256,
-            "type": "string"
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
           },
           "password": {
             "maxLength": 100,
             "minLength": 8,
             "type": "string"
-          },
-          "role": {
-            "pattern": "^(Organiser|Participant)$",
-            "type": "string"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Result": {
         "required": [
@@ -1270,50 +1534,31 @@
         "type": "object",
         "properties": {
           "resultId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "enrolmentId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "finishTimeSeconds": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ],
-            "format": "int32"
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "overallPosition": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ],
-            "format": "int32"
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "categoryPosition": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ],
-            "format": "int32"
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "status": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "recordedAtUtc": {
@@ -1321,98 +1566,56 @@
             "format": "date-time"
           },
           "enrolment": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/Enrolment"
-              }
-            ]
+            "$ref": "#/components/schemas/Enrolment"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "Route": {
         "type": "object",
         "properties": {
           "routeId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "eventId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "distanceKm": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "number",
-              "string"
-            ],
+            "type": "number",
             "format": "double"
           },
           "startLatitude": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "startLongitude": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "endLatitude": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "endLongitude": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "routeMapUrl": {
             "maxLength": 500,
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "nullable": true
           },
           "event": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/Event"
-              }
-            ]
+            "$ref": "#/components/schemas/Event"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "User": {
         "required": [
@@ -1423,23 +1626,22 @@
         "type": "object",
         "properties": {
           "userId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "email": {
             "maxLength": 256,
+            "minLength": 1,
             "type": "string"
           },
           "passwordHash": {
             "maxLength": 500,
+            "minLength": 1,
             "type": "string"
           },
           "role": {
             "maxLength": 20,
+            "minLength": 1,
             "type": "string"
           },
           "isActive": {
@@ -1450,28 +1652,24 @@
             "format": "date-time"
           },
           "userProfile": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/UserProfile"
-              }
-            ]
+            "$ref": "#/components/schemas/UserProfile"
           },
           "organisedEvents": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Event"
-            }
+            },
+            "nullable": true
           },
           "enrolments": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Enrolment"
-            }
+            },
+            "nullable": true
           }
-        }
+        },
+        "additionalProperties": false
       },
       "UserProfile": {
         "required": [
@@ -1481,54 +1679,38 @@
         "type": "object",
         "properties": {
           "userProfileId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "userId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "firstName": {
             "maxLength": 80,
+            "minLength": 1,
             "type": "string"
           },
           "lastName": {
             "maxLength": 80,
+            "minLength": 1,
             "type": "string"
           },
           "phoneNumber": {
             "maxLength": 20,
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "nullable": true
           },
           "dateOfBirth": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "date-time"
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
           },
           "user": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/User"
-              }
-            ]
+            "$ref": "#/components/schemas/User"
           }
-        }
+        },
+        "additionalProperties": false
       },
       "WeatherForecast": {
         "type": "object",
@@ -1538,46 +1720,30 @@
             "format": "date"
           },
           "temperatureC": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "temperatureF": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
-            "format": "int32"
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
           },
           "summary": {
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "nullable": true
           }
-        }
+        },
+        "additionalProperties": false
       },
       "WeatherSnapshot": {
         "type": "object",
         "properties": {
           "weatherSnapshotId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "eventId": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "integer",
-              "string"
-            ],
+            "type": "integer",
             "format": "int32"
           },
           "observedAtUtc": {
@@ -1585,50 +1751,30 @@
             "format": "date-time"
           },
           "temperatureC": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "windSpeedKph": {
-            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
-            "type": [
-              "null",
-              "number",
-              "string"
-            ],
-            "format": "double"
+            "type": "number",
+            "format": "double",
+            "nullable": true
           },
           "precipitationChance": {
-            "pattern": "^-?(?:0|[1-9]\\d*)$",
-            "type": [
-              "null",
-              "integer",
-              "string"
-            ],
-            "format": "uint8"
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
           },
           "conditions": {
             "maxLength": 100,
-            "type": [
-              "null",
-              "string"
-            ]
+            "type": "string",
+            "nullable": true
           },
           "event": {
-            "oneOf": [
-              {
-                "type": "null"
-              },
-              {
-                "$ref": "#/components/schemas/Event"
-              }
-            ]
+            "$ref": "#/components/schemas/Event"
           }
-        }
+        },
+        "additionalProperties": false
       }
     }
   },
