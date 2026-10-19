@@ -160,8 +160,8 @@ namespace RaceDay.Api.Controllers
             return NoContent();
 
         }
-
         // DELETE: api/Events/1
+        [SessionAuthorize("Organiser")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteEvent(int id)
         {
@@ -180,6 +180,7 @@ namespace RaceDay.Api.Controllers
 
             return NoContent();
         }
+
 
     }
 }
