@@ -243,6 +243,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RaceDay.Api.Controllers.ProfilesController",
+    "Method": "CreateProfile",
+    "RelativePath": "api/Profiles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "profile",
+        "Type": "RaceDay.Api.Models.UserProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Api.Controllers.ProfilesController",
+    "Method": "GetMyProfile",
+    "RelativePath": "api/Profiles/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RaceDay.Api.Controllers.ProfilesController",
+    "Method": "UpdateMyProfile",
+    "RelativePath": "api/Profiles/me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updatedProfile",
+        "Type": "RaceDay.Api.Models.UserProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RaceDay.Api.Controllers.ResultsController",
     "Method": "GetResults",
     "RelativePath": "api/Results",
