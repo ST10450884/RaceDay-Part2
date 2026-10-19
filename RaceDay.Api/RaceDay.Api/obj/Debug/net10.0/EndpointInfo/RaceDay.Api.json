@@ -25,6 +25,85 @@
         }
       }
     },
+    "/api/EventCategories": {
+      "get": {
+        "tags": [
+          "EventCategories"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventCategory"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventCategory"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventCategory"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/EventCategories/{id}": {
+      "get": {
+        "tags": [
+          "EventCategories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventCategory"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventCategory"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventCategory"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Events/{id}": {
       "get": {
         "tags": [
@@ -605,7 +684,12 @@
               }
             ]
           },
-          "enrolments": { }
+          "enrolments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Enrolment"
+            }
+          }
         }
       },
       "Result": {
@@ -980,6 +1064,9 @@
   "tags": [
     {
       "name": "DatabaseTest"
+    },
+    {
+      "name": "EventCategories"
     },
     {
       "name": "Events"
