@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\data\\racedaydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\data\\racedaydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\eventcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\eventcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\controllers\\eventscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\controllers\\eventscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\controllers\\databasetestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\controllers\\databasetestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,10 +35,6 @@
       "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\raceday.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\data\\racedaydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\data\\racedaydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\route.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\route.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -37,14 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\eventcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\eventcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\-prog6221-raceday-st10450884-main\\raceday-part2\\raceday.api\\raceday.api\\models\\userprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,6 +75,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "RaceDayDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Data\\RaceDayDbContext.cs",
+              "RelativeDocumentMoniker": "RaceDay.Api\\Data\\RaceDayDbContext.cs",
+              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Data\\RaceDayDbContext.cs",
+              "RelativeToolTip": "RaceDay.Api\\Data\\RaceDayDbContext.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABEAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T08:28:43.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EventCategory.cs",
+              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\EventCategory.cs",
+              "RelativeDocumentMoniker": "RaceDay.Api\\Models\\EventCategory.cs",
+              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\EventCategory.cs",
+              "RelativeToolTip": "RaceDay.Api\\Models\\EventCategory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T08:27:03.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EventsController.cs",
+              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\EventsController.cs",
+              "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\EventsController.cs",
+              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\EventsController.cs",
+              "RelativeToolTip": "RaceDay.Api\\Controllers\\EventsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T15:16:26.883Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "DatabaseTestController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\DatabaseTestController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\DatabaseTestController.cs",
@@ -83,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Program.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Program.cs",
@@ -91,12 +134,24 @@
               "RelativeToolTip": "RaceDay.Api\\Program.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAswB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T08:59:26.849Z",
+              "WhenOpened": "2026-10-19T08:59:26.849Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Event.cs",
+              "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Event.cs",
+              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Event.cs",
+              "RelativeToolTip": "RaceDay.Api\\Models\\Event.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-19T08:26:35.277Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\appsettings.json",
               "RelativeDocumentMoniker": "RaceDay.Api\\appsettings.json",
@@ -108,7 +163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "RaceDay.Api.csproj",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\RaceDay.Api.csproj",
               "RelativeDocumentMoniker": "RaceDay.Api\\RaceDay.Api.csproj",
@@ -120,19 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RaceDayDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Data\\RaceDayDbContext.cs",
-              "RelativeDocumentMoniker": "RaceDay.Api\\Data\\RaceDayDbContext.cs",
-              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Data\\RaceDayDbContext.cs",
-              "RelativeToolTip": "RaceDay.Api\\Data\\RaceDayDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T08:28:43.771Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Route.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Route.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Route.cs",
@@ -144,7 +187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "WeatherSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\WeatherSnapshot.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\WeatherSnapshot.cs",
@@ -156,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "Result.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Result.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Result.cs",
@@ -168,7 +211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Enrolment.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Enrolment.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Enrolment.cs",
@@ -180,31 +223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EventCategory.cs",
-              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\EventCategory.cs",
-              "RelativeDocumentMoniker": "RaceDay.Api\\Models\\EventCategory.cs",
-              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\EventCategory.cs",
-              "RelativeToolTip": "RaceDay.Api\\Models\\EventCategory.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T08:27:03.416Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Event.cs",
-              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Event.cs",
-              "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Event.cs",
-              "ToolTip": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Event.cs",
-              "RelativeToolTip": "RaceDay.Api\\Models\\Event.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAuwDQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-19T08:26:35.277Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "UserProfile.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\UserProfile.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\UserProfile.cs",
@@ -216,7 +235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\User.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\User.cs",

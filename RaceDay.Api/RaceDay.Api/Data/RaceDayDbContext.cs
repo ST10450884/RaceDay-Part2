@@ -25,6 +25,9 @@ public class RaceDayDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<EventCategory>()
+        .HasKey(c => c.CategoryId);
+
         modelBuilder.Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
