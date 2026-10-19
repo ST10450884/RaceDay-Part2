@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using RaceDay.Api.Data;
 
 namespace RaceDay.Api
 {
@@ -7,10 +9,15 @@ namespace RaceDay.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+            // Configure the SQL Server database connection.
+            builder.Services.AddDbContext<RaceDayDbContext>(options =>
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("RaceDayConnection")));
+
+            // OpenAPI configuration.
             builder.Services.AddOpenApi();
 
             var app = builder.Build();
