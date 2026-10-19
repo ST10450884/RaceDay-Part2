@@ -77,7 +77,16 @@ public class AuthorizationTests
             => Task.CompletedTask;
 
         public bool TryGetValue(string key, out byte[]? value)
-            => _store.TryGetValue(key, out value);
+        {
+            if (_store.TryGetValue(key, out var storedValue))
+            {
+                value = storedValue;
+                return true;
+            }
+
+            value = null;
+            return false;
+        }
 
         public void Set(string key, byte[] value)
             => _store[key] = value;

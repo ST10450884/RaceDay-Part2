@@ -38,13 +38,7 @@ public class AuthController : ControllerBase
             });
         }
 
-        var user = new User
-        {
-            Email = email,
-            Role = request.Role,
-            IsActive = true,
-            CreatedAtUtc = DateTime.UtcNow
-        };
+        var user = new User { Email = email, Role = "Participant", IsActive = true, CreatedAtUtc = DateTime.UtcNow };
 
         user.PasswordHash = _passwordHasher.HashPassword(
             user,
