@@ -117,4 +117,38 @@ public class AuthTests
         Assert.Empty(validationResults);
     }
 
+    [Fact]
+    public void PasswordHasher_HashesPasswordAndVerifiesIt()
+    {
+        // Arrange
+        var user = new RaceDay.Api.Models.User
+        {
+            Email = "runner@example.com",
+            Role = "Participant"
+        };
+
+        var passwordHasher =
+            new Microsoft.AspNetCore.Identity.PasswordHasher<RaceDay.Api.Models.User>();
+
+        var password = "StrongPass123!";
+
+        // Act
+        var hashedPassword = passwordHasher.HashPassword(user, password);
+
+        var correctPasswordResult = passwordHasher.VerifyHashedPassword(
+            user, hashedPassword, password);
+
+        var incorrectPasswordResult = passwordHasher.VerifyHashedPassword(
+            user, hashedPassword, "WrongPassword123!");
+
+        // Assert
+        Assert.NotEqual(password, hashedPassword);
+        Assert.Equal(
+            Microsoft.AspNetCore.Identity.PasswordVerificationResult.Success,
+            correctPasswordResult);
+        Assert.Equal(
+            Microsoft.AspNetCore.Identity.PasswordVerificationResult.Failed,
+            incorrectPasswordResult);
+    }
+
 }
