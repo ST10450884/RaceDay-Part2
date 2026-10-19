@@ -157,5 +157,26 @@ namespace RaceDay.Api.Controllers
             return NoContent();
 
         }
+
+        // DELETE: api/Events/1
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeleteEvent(int id)
+        {
+            var eventItem = await _context.Events.FindAsync(id);
+
+            if (eventItem == null)
+            {
+                return NotFound(new
+                {
+                    message = $"Event with ID {id} was not found."
+                });
+            }
+
+            _context.Events.Remove(eventItem);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
     }
 }
