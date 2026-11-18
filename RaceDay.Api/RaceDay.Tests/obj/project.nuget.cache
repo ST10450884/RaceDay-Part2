@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rIriRa5ip1s=",
+  "dgSpecHash": "64an4clEJ6w=",
   "success": true,
-  "projectFilePath": "C:\\Users\\emeris\\Documents\\-PROG6221-RaceDay-ST10450884-main\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Tests\\RaceDay.Tests.csproj",
+  "projectFilePath": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Tests\\RaceDay.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emeris\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\emeris\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
