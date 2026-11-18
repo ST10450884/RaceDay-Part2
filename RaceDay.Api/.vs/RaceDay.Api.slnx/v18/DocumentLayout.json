@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B2BE9F5A-1724-486B-96E5-A603AC4ACE76}|RaceDay.Mvc\\RaceDay.Mvc.fsproj|c:\\users\\emeris\\documents\\raceday\\raceday-part2\\raceday.api\\raceday.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B2BE9F5A-1724-486B-96E5-A603AC4ACE76}|RaceDay.Mvc\\RaceDay.Mvc.fsproj|solutionrelative:raceday.mvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|c:\\users\\emeris\\documents\\raceday\\raceday-part2\\raceday.api\\raceday.api\\.github\\workflows\\dotnet.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}",
       "RelativeMoniker": "D:0:0:{48D9D8E2-607E-794F-661B-67674A1416B8}|RaceDay.Api\\RaceDay.Api.csproj|solutionrelative:raceday.api\\.github\\workflows\\dotnet.yml||{06C066C6-04A2-4E5D-8202-439FD4234EF1}"
     },
@@ -135,6 +139,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Mvc\\appsettings.json",
+              "RelativeDocumentMoniker": "RaceDay.Mvc\\appsettings.json",
+              "ToolTip": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Mvc\\appsettings.json",
+              "RelativeToolTip": "RaceDay.Mvc\\appsettings.json",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAswAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-11-18T18:46:40.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "dotnet.yml",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\.github\\workflows\\dotnet.yml",
               "RelativeDocumentMoniker": "RaceDay.Api\\.github\\workflows\\dotnet.yml",
@@ -147,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RaceDay.Api.csproj",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\RaceDay.Api.csproj",
               "RelativeDocumentMoniker": "RaceDay.Api\\RaceDay.Api.csproj",
@@ -159,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Enrolment.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Enrolment.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Enrolment.cs",
@@ -171,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Program.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Program.cs",
@@ -183,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AuthTests.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Tests\\AuthTests.cs",
               "RelativeDocumentMoniker": "RaceDay.Tests\\AuthTests.cs",
@@ -195,7 +212,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AuthorizationTests.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Tests\\AuthorizationTests.cs",
               "RelativeDocumentMoniker": "RaceDay.Tests\\AuthorizationTests.cs",
@@ -207,7 +224,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "RegisterRequest.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\DTOs\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\DTOs\\RegisterRequest.cs",
@@ -219,7 +236,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\AuthController.cs",
@@ -231,7 +248,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UnitTest1.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Tests\\UnitTest1.cs",
               "RelativeDocumentMoniker": "RaceDay.Tests\\UnitTest1.cs",
@@ -243,7 +260,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Result.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Result.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Result.cs",
@@ -255,7 +272,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ResultsController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\ResultsController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\ResultsController.cs",
@@ -267,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "EnrolmentsController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\EnrolmentsController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\EnrolmentsController.cs",
@@ -279,7 +296,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CreateEnrolmentRequest.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\DTOs\\CreateEnrolmentRequest.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\DTOs\\CreateEnrolmentRequest.cs",
@@ -291,7 +308,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "WeatherSnapshot.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\WeatherSnapshot.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\WeatherSnapshot.cs",
@@ -303,7 +320,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\User.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\User.cs",
@@ -315,7 +332,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "EventCategory.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\EventCategory.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\EventCategory.cs",
@@ -327,7 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Route.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Route.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Route.cs",
@@ -339,7 +356,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "UserProfile.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\UserProfile.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\UserProfile.cs",
@@ -351,7 +368,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Event.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Models\\Event.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Models\\Event.cs",
@@ -363,7 +380,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "EventCategoriesController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\EventCategoriesController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\EventCategoriesController.cs",
@@ -375,7 +392,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "ProfilesController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\ProfilesController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\ProfilesController.cs",
@@ -387,7 +404,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "SessionAuthorizeAttribute.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Authorization\\SessionAuthorizeAttribute.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Authorization\\SessionAuthorizeAttribute.cs",
@@ -399,7 +416,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "EventsController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\EventsController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\EventsController.cs",
@@ -411,7 +428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\DTOs\\LoginRequest.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\DTOs\\LoginRequest.cs",
@@ -423,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "RoutesController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\RoutesController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\RoutesController.cs",
@@ -435,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\WeatherForecastController.cs",
@@ -447,7 +464,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "WeatherSnapshotsController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\WeatherSnapshotsController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\WeatherSnapshotsController.cs",
@@ -459,7 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "UserProfilesController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\UserProfilesController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\UserProfilesController.cs",
@@ -471,7 +488,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Api\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "RaceDay.Api\\Controllers\\UsersController.cs",

@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "dgSpecHash": "etlgQg4EqWw=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\emeris\\Documents\\RaceDay\\RaceDay-Part2\\RaceDay.Api\\RaceDay.Mvc\\RaceDay.Mvc.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\emeris\\.nuget\\packages\\fsharp.core\\10.1.402\\fsharp.core.10.1.402.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\6.0.0\\microsoft.aspnetcore.mvc.razor.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\10.0.13\\microsoft.aspnetcore.mvc.razor.runtimecompilation.10.0.13.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.0\\microsoft.aspnetcore.razor.language.6.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.2\\microsoft.codeanalysis.analyzers.3.3.2.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.0\\microsoft.codeanalysis.common.4.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.0.0\\microsoft.codeanalysis.csharp.4.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.codeanalysis.razor\\6.0.0\\microsoft.codeanalysis.razor.6.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.configuration\\11.0.0\\microsoft.extensions.configuration.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\11.0.0\\microsoft.extensions.configuration.abstractions.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.configuration.binder\\11.0.0\\microsoft.extensions.configuration.binder.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\11.0.0\\microsoft.extensions.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\11.0.0\\microsoft.extensions.dependencyinjection.abstractions.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.dependencymodel\\10.0.13\\microsoft.extensions.dependencymodel.10.0.13.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.diagnostics\\11.0.0\\microsoft.extensions.diagnostics.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\11.0.0\\microsoft.extensions.diagnostics.abstractions.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.http\\11.0.0\\microsoft.extensions.http.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.logging\\11.0.0\\microsoft.extensions.logging.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\11.0.0\\microsoft.extensions.logging.abstractions.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.options\\11.0.0\\microsoft.extensions.options.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\11.0.0\\microsoft.extensions.options.configurationextensions.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\microsoft.extensions.primitives\\11.0.0\\microsoft.extensions.primitives.11.0.0.nupkg.sha512",
+    "C:\\Users\\emeris\\.nuget\\packages\\system.diagnostics.diagnosticsource\\11.0.0\\system.diagnostics.diagnosticsource.11.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
