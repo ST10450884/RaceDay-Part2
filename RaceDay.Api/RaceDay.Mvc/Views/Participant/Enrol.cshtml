@@ -1,0 +1,83 @@
+﻿@model RaceDay.Mvc.Models.CreateEnrolmentViewModel
+
+@{
+    ViewData["Title"] = "Enrol in Event";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Event Enrolment</h4>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="mb-3">@Model.CategoryName</h5>
+
+                    <p class="text-muted">
+                        Complete your emergency contact details to submit
+                        your enrolment.
+                    </p>
+
+                    <form asp-controller="Participant"
+                          asp-action="Enrol"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden" asp-for="CategoryId" />
+                        <input type="hidden" asp-for="EventId" />
+                        <input type="hidden" asp-for="CategoryName" />
+
+                        <div asp-validation-summary="All"
+                             class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmergencyContactName"
+                                   class="form-label">
+                                Emergency Contact Name
+                            </label>
+
+                            <input asp-for="EmergencyContactName"
+                                   class="form-control"
+                                   placeholder="Enter contact's full name" />
+
+                            <span asp-validation-for="EmergencyContactName"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="EmergencyContactPhone"
+                                   class="form-label">
+                                Emergency Contact Phone
+                            </label>
+
+                            <input asp-for="EmergencyContactPhone"
+                                   class="form-control"
+                                   placeholder="Enter contact's phone number" />
+
+                            <span asp-validation-for="EmergencyContactPhone"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">
+                            Submit Enrolment
+                        </button>
+
+                        <a asp-controller="Participant"
+                           asp-action="Categories"
+                           asp-route-id="@Model.EventId"
+                           class="btn btn-outline-secondary w-100 mt-2">
+                            Cancel
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

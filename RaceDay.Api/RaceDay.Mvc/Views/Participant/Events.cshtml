@@ -77,6 +77,13 @@
                                 @item.Status
                             </p>
 
+                            <a asp-controller="Participant"
+                               asp-action="Categories"
+                               asp-route-id="@item.EventId"
+                               class="btn btn-primary w-100 rounded-pill mt-3">
+                                View Categories
+                            </a>
+
                         </div>
 
                     </div>

@@ -1,0 +1,85 @@
+﻿@model List<RaceDay.Mvc.Models.EventCategoryViewModel>
+
+@{
+    ViewData["Title"] = "Event Categories";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>@ViewBag.EventName</h2>
+            <p class="text-muted">Choose an event category to enrol in.</p>
+        </div>
+        <a asp-controller="Participant" asp-action="Events"
+           class="btn btn-outline-secondary">Back to Events</a>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">
+            No categories are currently available for this event.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var category in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@category.Name</h5>
+
+                            <p>
+                                <strong>Distance:</strong>
+                                @category.DistanceKm km
+                            </p>
+
+                            <p>
+                                <strong>Entry Fee:</strong>
+                                R @category.Fee.ToString("N2")
+                            </p>
+
+                            <p>
+                                <strong>Minimum Age:</strong>
+                                @category.MinimumAge
+                            </p>
+
+                            <p>
+                                <strong>Capacity:</strong>
+                                @category.Capacity participants
+                            </p>
+
+                            <p>
+                                <strong>Start Time:</strong>
+                                @category.StartTime
+                            </p>
+
+                            <a asp-controller="Participant"
+                               asp-action="Enrol"
+                               asp-route-id="@category.CategoryId"
+                               class="btn btn-primary w-100">
+                                Enrol Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

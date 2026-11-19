@@ -100,5 +100,4 @@ public class AuthController : ControllerBase
             message = "Login successful."
         });
     }
-
 }

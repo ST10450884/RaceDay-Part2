@@ -39,12 +39,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Participant/Categories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGljaXBhbnRcQ2F0ZWdvcmllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Participant/Enrol.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGljaXBhbnRcRW5yb2wuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Participant/Events.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGljaXBhbnRcRXZlbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Participant/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGljaXBhbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Participant/MyEnrolments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFydGljaXBhbnRcTXlFbnJvbG1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Profile/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmlsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Shared/Error.cshtml]

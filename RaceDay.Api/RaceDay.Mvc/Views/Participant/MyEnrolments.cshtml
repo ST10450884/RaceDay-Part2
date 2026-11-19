@@ -1,0 +1,112 @@
+﻿@model List<RaceDay.Mvc.Models.EnrolmentViewModel>
+
+@{
+    ViewData["Title"] = "My Enrolments";
+}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold">My Enrolments</h1>
+            <p class="text-muted">View your registered RaceDay events.</p>
+        </div>
+
+        <a asp-controller="Participant"
+           asp-action="Index"
+           class="btn btn-outline-primary rounded-pill">
+            Back to Dashboard
+        </a>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info rounded-4">
+            You have not enrolled in any events yet.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var enrolment in Model)
+            {
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4">
+
+                            <h4 class="fw-bold">
+                                @(enrolment.Category?.Event?.Name ?? "RaceDay Event")
+                            </h4>
+
+                            <p class="text-muted mb-2">
+                                @(enrolment.Category?.Name ?? "Event Category")
+                            </p>
+
+                            <hr />
+
+                            <p>
+                                <strong>Event date:</strong>
+                                @(enrolment.Category?.Event?.EventDate.ToString("dd MMMM yyyy") ?? "Not available")
+                            </p>
+
+                            <p>
+                                <strong>Distance:</strong>
+                                @(enrolment.Category?.DistanceKm.ToString("0.##") ?? "Not available") km
+                            </p>
+
+                            <p>
+                                <strong>Venue:</strong>
+                                @(enrolment.Category?.Event?.Venue ?? "Not available")
+                            </p>
+
+                            <p>
+                                <strong>Enrolment date:</strong>
+                                @enrolment.EnrolledAtUtc.ToLocalTime().ToString("dd MMMM yyyy")
+                            </p>
+
+                            <p class="mb-0">
+                                <strong>Status:</strong>
+
+                                @if (enrolment.Status == "Pending")
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Pending
+                                    </span>
+                                }
+                                else if (enrolment.Status == "Confirmed")
+                                {
+                                    <span class="badge bg-success">
+                                        Confirmed
+                                    </span>
+                                }
+                                else if (enrolment.Status == "Cancelled")
+                                {
+                                    <span class="badge bg-danger">
+                                        Cancelled
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">
+                                        @enrolment.Status
+                                    </span>
+                                }
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
