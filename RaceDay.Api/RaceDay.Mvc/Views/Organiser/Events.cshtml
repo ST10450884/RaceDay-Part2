@@ -1,0 +1,125 @@
+﻿@model List<RaceDay.Mvc.Models.EventViewModel>
+
+@{
+    ViewData["Title"] = "Manage Events";
+}
+
+<div class="container py-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold">Manage Events</h1>
+            <p class="text-muted">
+                View and manage your sporting events.
+            </p>
+        </div>
+
+        <a asp-controller="Organiser"
+           asp-action="Index"
+           class="btn btn-outline-primary rounded-pill">
+            Back to Dashboard
+        </a>
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h4 class="fw-bold mb-0">Your Events</h4>
+
+        <a asp-controller="Organiser"
+           asp-action="CreateEvent"
+           class="btn btn-success rounded-pill">
+            + Create New Event
+        </a>
+
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info rounded-4">
+            You have not created any events yet.
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var eventItem in Model)
+            {
+                <div class="col-md-6">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                        <div class="card-body p-4">
+
+                            <h4 class="fw-bold">
+                                @eventItem.Name
+                            </h4>
+
+                            <p class="text-muted">
+                                @eventItem.Description
+                            </p>
+
+                            <hr />
+
+                            <p>
+                                <strong>Event type:</strong>
+                                @eventItem.EventType
+                            </p>
+
+                            <p>
+                                <strong>Date:</strong>
+                                @eventItem.EventDate.ToString("dd MMMM yyyy")
+                            </p>
+
+                            <p>
+                                <strong>Venue:</strong>
+                                @eventItem.Venue, @eventItem.City
+                            </p>
+
+                            <p>
+                                <strong>Registration closes:</strong>
+                                @eventItem.RegistrationCloseDate.ToString("dd MMMM yyyy")
+                            </p>
+
+                            <p>
+                                <strong>Maximum participants:</strong>
+                                @eventItem.MaxParticipants
+                            </p>
+
+                            <p class="mb-3">
+                                <strong>Status:</strong>
+                                @eventItem.Status
+                            </p>
+
+                            <a asp-controller="Organiser"
+                               asp-action="EditEvent"
+                               asp-route-id="@eventItem.EventId"
+                               class="btn btn-outline-primary rounded-pill">
+                                Edit
+                            </a>
+
+                            <a asp-controller="Organiser"
+                               asp-action="DeleteEvent"
+                               asp-route-id="@eventItem.EventId"
+                               class="btn btn-outline-danger rounded-pill">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

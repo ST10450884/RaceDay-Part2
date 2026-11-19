@@ -18,7 +18,6 @@ namespace RaceDay.Api.Controllers
             _context = context;
         }
 
-
         // GET: api/Events/1
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Event>> GetEvent(int id)
@@ -38,7 +37,6 @@ namespace RaceDay.Api.Controllers
             return Ok(eventItem);
         }
 
-
         // GET: api/Events
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
@@ -56,9 +54,12 @@ namespace RaceDay.Api.Controllers
         public async Task<ActionResult<Event>> CreateEvent(Event eventItem)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
+
+            var organiserId = HttpContext.Session.GetInt32("UserId");
+
+            if (organiserId == null)
+                return Unauthorized();
 
             if (eventItem.RegistrationCloseDate >= eventItem.EventDate)
             {
@@ -86,7 +87,8 @@ namespace RaceDay.Api.Controllers
                 });
             }
 
-            // Use the database-generated creation timestamp.
+            // Assign the logged-in organiser instead of trusting the request.
+            eventItem.OrganiserId = organiserId.Value;
             eventItem.CreatedAtUtc = DateTime.UtcNow;
 
             _context.Events.Add(eventItem);
@@ -96,12 +98,18 @@ namespace RaceDay.Api.Controllers
                 nameof(GetEvent),
                 new { id = eventItem.EventId },
                 eventItem);
-            }
-            // PUT: api/Events/1
-            [SessionAuthorize("Organiser")]
-            [HttpPut("{id:int}")]
-            public async Task<IActionResult> UpdateEvent(int id, Event updatedEvent)
-            {
+        }
+
+        // PUT: api/Events/1
+        [SessionAuthorize("Organiser")]
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdateEvent(int id, Event updatedEvent)
+        {
+            var organiserId = HttpContext.Session.GetInt32("UserId");
+
+            if (organiserId == null)
+                return Unauthorized();
+
             var existingEvent = await _context.Events.FindAsync(id);
 
             if (existingEvent == null)
@@ -112,10 +120,14 @@ namespace RaceDay.Api.Controllers
                 });
             }
 
-            if (!ModelState.IsValid)
+            // Ensure the organiser owns this event.
+            if (existingEvent.OrganiserId != organiserId.Value)
             {
-                return BadRequest(ModelState);
+                return Forbid();
             }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             if (updatedEvent.RegistrationCloseDate >= updatedEvent.EventDate)
             {
@@ -143,7 +155,7 @@ namespace RaceDay.Api.Controllers
                 });
             }
 
-            existingEvent.OrganiserId = updatedEvent.OrganiserId;
+            // Preserve the original owner.
             existingEvent.Name = updatedEvent.Name;
             existingEvent.Description = updatedEvent.Description;
             existingEvent.EventType = updatedEvent.EventType;
@@ -158,13 +170,18 @@ namespace RaceDay.Api.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-
         }
+
         // DELETE: api/Events/1
         [SessionAuthorize("Organiser")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteEvent(int id)
         {
+            var organiserId = HttpContext.Session.GetInt32("UserId");
+
+            if (organiserId == null)
+                return Unauthorized();
+
             var eventItem = await _context.Events.FindAsync(id);
 
             if (eventItem == null)
@@ -175,12 +192,16 @@ namespace RaceDay.Api.Controllers
                 });
             }
 
+            // Ensure the organiser owns this event.
+            if (eventItem.OrganiserId != organiserId.Value)
+            {
+                return Forbid();
+            }
+
             _context.Events.Remove(eventItem);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
-
-
     }
 }
