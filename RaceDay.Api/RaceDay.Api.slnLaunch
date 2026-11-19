@@ -7,7 +7,7 @@
         "Action": "Start"
       },
       {
-        "Path": "RaceDay.Tests\\RaceDay.Tests.csproj",
+        "Path": "RaceDay.Mvc\\RaceDay.Mvc.csproj",
         "Action": "Start"
       }
     ]

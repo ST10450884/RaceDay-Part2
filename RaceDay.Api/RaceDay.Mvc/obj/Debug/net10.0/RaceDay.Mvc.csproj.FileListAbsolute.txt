@@ -91,10 +91,10 @@ C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debu
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\staticwebassets.development.json
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\RaceDay.Mvc.dll
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\refint\RaceDay.Mvc.dll
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\RaceDay.Mvc.pdb
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\RaceDay.Mvc.genruntimeconfig.cache
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\ref\RaceDay.Mvc.dll
+C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\emeris\Documents\RaceDay\RaceDay-Part2\RaceDay.Api\RaceDay.Mvc\obj\Debug\net10.0\RaceDay..FA4311BE.Up2Date

@@ -64,6 +64,7 @@ public class AuthController : ControllerBase
 
         var user = await _context.Users
             .FirstOrDefaultAsync(u => u.Email.ToLower() == email);
+   
 
         if (user == null || !user.IsActive)
         {
@@ -77,6 +78,8 @@ public class AuthController : ControllerBase
             user,
             user.PasswordHash,
             request.Password);
+        Console.WriteLine($"PASSWORD CHECK RESULT: {verificationResult}");
+        Console.WriteLine($"USER FOUND: {user.UserId}");
 
         if (verificationResult == PasswordVerificationResult.Failed)
         {
