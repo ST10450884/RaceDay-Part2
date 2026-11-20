@@ -1,5 +1,7 @@
+
 using Microsoft.EntityFrameworkCore;
 using RaceDay.Api.Data;
+using RaceDay.Api.Services;
 
 namespace RaceDay.Api
 {
@@ -9,8 +11,9 @@ namespace RaceDay.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
             builder.Services.AddControllers();
+
+            builder.Services.AddSingleton<BlobStorageService>();
 
             builder.Services.AddDistributedMemoryCache();
 
@@ -19,19 +22,20 @@ namespace RaceDay.Api
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.Cookie.SecurePolicy =
+                    CookieSecurePolicy.Always;
             });
 
-            // Configure the SQL Server database connection.
             builder.Services.AddDbContext<RaceDayDbContext>(options =>
                 options.UseSqlServer(
-                    builder.Configuration.GetConnectionString("RaceDayConnection")));
+                    builder.Configuration.GetConnectionString(
+                        "RaceDayConnection")));
 
-           
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
             app.UseSession();
 
             if (app.Environment.IsDevelopment())
@@ -41,10 +45,7 @@ namespace RaceDay.Api
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();

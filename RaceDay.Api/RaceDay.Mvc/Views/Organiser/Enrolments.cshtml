@@ -1,0 +1,216 @@
+﻿@model List<RaceDay.Mvc.Models.OrganiserEnrolmentViewModel>
+
+@{
+    ViewData["Title"] = "Manage Enrolments";
+}
+
+<div class="container py-5">
+
+    <!-- Page heading -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold">Manage Enrolments</h1>
+            <p class="text-muted">
+                View participants enrolled in your events and manage their enrolment statuses.
+            </p>
+        </div>
+
+        <a asp-controller="Organiser"
+           asp-action="Index"
+           class="btn btn-outline-primary rounded-pill">
+            Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Success message -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+            </button>
+        </div>
+    }
+
+    <!-- Error message -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["Error"]
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+            </button>
+        </div>
+    }
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
+    }
+
+    <!-- Enrolments table -->
+    @if (Model == null || !Model.Any())
+    {
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body text-center py-5">
+                <h4 class="fw-bold">No Enrolments Yet</h4>
+                <p class="text-muted mb-0">
+                    Participants who enrol in your events will appear here.
+                </p>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold mb-0">Participant Enrolments</h5>
+
+                    <span class="badge bg-primary rounded-pill">
+                        @Model.Count() Enrolments
+                    </span>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>Enrolment ID</th>
+                                <th>Participant ID</th>
+                                <th>Event</th>
+                                <th>Category</th>
+                                <th>Enrolled On</th>
+                                <th>Current Status</th>
+                                <th>Emergency Contact</th>
+                                <th>Update Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var enrolment in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        #@enrolment.EnrolmentId
+                                    </td>
+
+                                    <td>
+                                        @enrolment.ParticipantId
+                                    </td>
+
+                                    <td>
+                                        <strong>@enrolment.EventName</strong>
+                                    </td>
+
+                                    <td>
+                                        @enrolment.CategoryName
+                                    </td>
+
+                                    <td>
+                                        @enrolment.EnrolledAtUtc.ToString("dd MMM yyyy")
+                                    </td>
+
+                                    <td>
+                                        @if (enrolment.Status == "Confirmed")
+                                        {
+                                            <span class="badge bg-success">
+                                                Confirmed
+                                            </span>
+                                        }
+                                        else if (enrolment.Status == "Cancelled")
+                                        {
+                                            <span class="badge bg-secondary">
+                                                Cancelled
+                                            </span>
+                                        }
+                                        else if (enrolment.Status == "Disqualified")
+                                        {
+                                            <span class="badge bg-danger">
+                                                Disqualified
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-warning text-dark">
+                                                Pending
+                                            </span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <strong>
+                                            @enrolment.EmergencyContactName
+                                        </strong>
+                                        <br />
+                                        <small class="text-muted">
+                                            @enrolment.EmergencyContactPhone
+                                        </small>
+                                    </td>
+
+                                    <td>
+                                        <form asp-controller="Organiser"
+                                              asp-action="UpdateEnrolmentStatus"
+                                              method="post"
+                                              class="d-flex flex-column gap-2">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="@enrolment.EnrolmentId" />
+
+                                            <select name="status"
+                                                    class="form-select form-select-sm"
+                                                    required>
+
+                                                <option value="Pending"
+                                                        selected="@(enrolment.Status == "Pending")">
+                                                    Pending
+                                                </option>
+
+                                                <option value="Confirmed"
+                                                        selected="@(enrolment.Status == "Confirmed")">
+                                                    Confirmed
+                                                </option>
+
+                                                <option value="Cancelled"
+                                                        selected="@(enrolment.Status == "Cancelled")">
+                                                    Cancelled
+                                                </option>
+
+                                                <option value="Disqualified"
+                                                        selected="@(enrolment.Status == "Disqualified")">
+                                                    Disqualified
+                                                </option>
+
+                                            </select>
+
+                                            <button type="submit"
+                                                    class="btn btn-primary btn-sm">
+                                                Update
+                                            </button>
+
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    }
+
+</div>

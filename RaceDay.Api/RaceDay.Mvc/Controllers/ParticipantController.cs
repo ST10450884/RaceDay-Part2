@@ -8,10 +8,14 @@ namespace RaceDay.Mvc.Controllers
     public class ParticipantController : Controller
     {
         private readonly ApiService _apiService;
+        private readonly IConfiguration _configuration;
 
-        public ParticipantController(ApiService apiService)
+        public ParticipantController(
+            ApiService apiService,
+            IConfiguration configuration)
         {
             _apiService = apiService;
+            _configuration = configuration;
         }
 
         private bool IsParticipant()
@@ -20,6 +24,13 @@ namespace RaceDay.Mvc.Controllers
                    HttpContext.Session.GetString("UserRole") == "Participant";
         }
 
+        private void SetApiBaseUrl()
+        {
+            ViewBag.ApiBaseUrl =
+                _configuration["ApiSettings:BaseUrl"]?.TrimEnd('/');
+        }
+
+        // DASHBOARD
         public IActionResult Index()
         {
             if (!IsParticipant())
@@ -34,10 +45,14 @@ namespace RaceDay.Mvc.Controllers
             return View(model);
         }
 
+        // BROWSE EVENTS
+        [HttpGet]
         public async Task<IActionResult> Events()
         {
             if (!IsParticipant())
                 return RedirectToAction("Login", "Auth");
+
+            SetApiBaseUrl();
 
             try
             {
@@ -53,10 +68,14 @@ namespace RaceDay.Mvc.Controllers
             }
         }
 
+        // VIEW EVENT CATEGORIES
+        [HttpGet]
         public async Task<IActionResult> Categories(int id)
         {
             if (!IsParticipant())
                 return RedirectToAction("Login", "Auth");
+
+            SetApiBaseUrl();
 
             try
             {
@@ -74,6 +93,7 @@ namespace RaceDay.Mvc.Controllers
 
                 ViewBag.EventName = selectedEvent.Name;
                 ViewBag.EventId = id;
+                ViewBag.EventPosterUrl = selectedEvent.PosterUrl;
 
                 var eventCategories = categories?
                     .Where(c => c.EventId == id)
@@ -88,6 +108,7 @@ namespace RaceDay.Mvc.Controllers
             }
         }
 
+        // ENROL - DISPLAY FORM
         [HttpGet]
         public async Task<IActionResult> Enrol(int id)
         {
@@ -100,7 +121,8 @@ namespace RaceDay.Mvc.Controllers
                     await _apiService.GetAsync<List<EventCategoryViewModel>>(
                         "api/EventCategories");
 
-                var category = categories?.FirstOrDefault(c => c.CategoryId == id);
+                var category = categories?
+                    .FirstOrDefault(c => c.CategoryId == id);
 
                 if (category == null)
                     return NotFound();
@@ -121,6 +143,7 @@ namespace RaceDay.Mvc.Controllers
             }
         }
 
+        // ENROL - SUBMIT FORM
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Enrol(CreateEnrolmentViewModel model)
@@ -144,14 +167,19 @@ namespace RaceDay.Mvc.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["Success"] = "Your enrolment was submitted successfully.";
-                    return RedirectToAction("Categories",
+                    TempData["Success"] =
+                        "Your enrolment was submitted successfully.";
+
+                    return RedirectToAction(
+                        "Categories",
                         new { id = model.EventId });
                 }
 
-                var errorMessage = await response.Content.ReadAsStringAsync();
+                var errorMessage =
+                    await response.Content.ReadAsStringAsync();
 
-                ModelState.AddModelError("",
+                ModelState.AddModelError(
+                    "",
                     "Enrolment could not be completed. Check that your profile has a date of birth and that the category is still open. " +
                     errorMessage);
 
@@ -159,14 +187,16 @@ namespace RaceDay.Mvc.Controllers
             }
             catch
             {
-                ModelState.AddModelError("",
+                ModelState.AddModelError(
+                    "",
                     "Unable to contact the RaceDay API. Please try again.");
 
                 return View(model);
             }
         }
 
-        // GET: Participant/MyEnrolments
+        // MY ENROLMENTS
+        [HttpGet]
         public async Task<IActionResult> MyEnrolments()
         {
             if (!IsParticipant())
@@ -189,5 +219,26 @@ namespace RaceDay.Mvc.Controllers
             }
         }
 
+        // MY RACE RESULTS
+        [HttpGet]
+        public async Task<IActionResult> MyResults()
+        {
+            if (!IsParticipant())
+                return RedirectToAction("Login", "Auth");
+
+            try
+            {
+                var results =
+                    await _apiService.GetAsync<List<ResultViewModel>>(
+                        "api/Results");
+
+                return View(results ?? new List<ResultViewModel>());
+            }
+            catch
+            {
+                ViewBag.Error = "Unable to load your race results.";
+                return View(new List<ResultViewModel>());
+            }
+        }
     }
 }

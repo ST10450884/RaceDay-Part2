@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Browse Events";
+    var apiBaseUrl = ViewBag.ApiBaseUrl as string ?? "";
 }
 
 <div class="container py-5">
@@ -22,6 +23,11 @@
         <div class="alert alert-danger">@ViewBag.Error</div>
     }
 
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
     @if (Model == null || !Model.Any())
     {
         <div class="alert alert-info">
@@ -36,7 +42,25 @@
             {
                 <div class="col-md-6 col-lg-4">
 
-                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                    <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+
+                        @if (!string.IsNullOrWhiteSpace(item.PosterUrl))
+                        {
+                            <img src="@($"{apiBaseUrl}{item.PosterUrl}")"
+                                 class="card-img-top"
+                                 alt="@item.Name event poster"
+                                 style="height: 230px; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <div class="d-flex align-items-center justify-content-center bg-light"
+                                 style="height: 230px;">
+                                <div class="text-center text-muted">
+                                    <div class="fs-1">🏃</div>
+                                    <p class="mb-0">No event poster available</p>
+                                </div>
+                            </div>
+                        }
 
                         <div class="card-body p-4">
 
@@ -85,7 +109,6 @@
                             </a>
 
                         </div>
-
                     </div>
 
                 </div>

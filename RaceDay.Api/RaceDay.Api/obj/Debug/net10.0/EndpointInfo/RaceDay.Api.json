@@ -167,6 +167,48 @@
         }
       }
     },
+    "/api/Enrolments/{id}/status": {
+      "put": {
+        "tags": [
+          "Enrolments"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEnrolmentStatusRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEnrolmentStatusRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEnrolmentStatusRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/EventCategories": {
       "get": {
         "tags": [
@@ -342,6 +384,92 @@
             "schema": {
               "type": "integer",
               "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EventCategories/organiser": {
+      "get": {
+        "tags": [
+          "EventCategories"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EventPosters/upload": {
+      "post": {
+        "tags": [
+          "EventPosters"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EventPosters/{blobName}": {
+      "get": {
+        "tags": [
+          "EventPosters"
+        ],
+        "parameters": [
+          {
+            "name": "blobName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "EventPosters"
+        ],
+        "parameters": [
+          {
+            "name": "blobName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -616,33 +744,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Result"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Result"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Result"
-                  }
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -671,24 +773,7 @@
         },
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       }
@@ -711,24 +796,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Result"
-                }
-              }
-            }
+            "description": "OK"
           }
         }
       },
@@ -1296,6 +1364,11 @@
             "minLength": 1,
             "type": "string"
           },
+          "posterUrl": {
+            "maxLength": 500,
+            "type": "string",
+            "nullable": true
+          },
           "createdAtUtc": {
             "type": "string",
             "format": "date-time"
@@ -1305,13 +1378,6 @@
           },
           "route": {
             "$ref": "#/components/schemas/Route"
-          },
-          "categories": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/EventCategory"
-            },
-            "nullable": true
           },
           "weatherSnapshots": {
             "type": "array",
@@ -1361,16 +1427,6 @@
           "startTime": {
             "type": "string",
             "format": "date-span"
-          },
-          "event": {
-            "$ref": "#/components/schemas/Event"
-          },
-          "enrolments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Enrolment"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1501,6 +1557,16 @@
           },
           "event": {
             "$ref": "#/components/schemas/Event"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateEnrolmentStatusRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1678,6 +1744,9 @@
     },
     {
       "name": "EventCategories"
+    },
+    {
+      "name": "EventPosters"
     },
     {
       "name": "Events"

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit Event";
+    var apiBaseUrl = ViewBag.ApiBaseUrl as string ?? "";
 }
 
 <div class="container py-5">
@@ -14,10 +15,10 @@
 
             <form asp-action="EditEvent"
                   asp-route-id="@ViewBag.EventId"
-                  method="post">
+                  method="post"
+                  enctype="multipart/form-data">
 
-                <div asp-validation-summary="All"
-                     class="text-danger mb-3"></div>
+                <div asp-validation-summary="All" class="text-danger mb-3"></div>
 
                 <div class="mb-3">
                     <label asp-for="Name" class="form-label">Event name</label>
@@ -37,6 +38,34 @@
                         <option value="Walking">Walking</option>
                         <option value="Cycling">Cycling</option>
                     </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Current event poster</label>
+
+                    @if (!string.IsNullOrWhiteSpace(Model.PosterUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="@($"{apiBaseUrl.TrimEnd('/')}{Model.PosterUrl}")"
+                                 alt="Current event poster"
+                                 class="img-fluid rounded-3"
+                                 style="max-height: 250px;" />
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No poster uploaded for this event.</p>
+                    }
+
+                    <label asp-for="PosterFile" class="form-label">Upload replacement poster</label>
+                    <input asp-for="PosterFile"
+                           type="file"
+                           class="form-control"
+                           accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
+
+                    <small class="text-muted">
+                        Leave empty to keep the current poster. JPG, PNG or WEBP. Maximum 5 MB.
+                    </small>
                 </div>
 
                 <div class="row">
@@ -80,7 +109,10 @@
                         <label asp-for="MaxParticipants" class="form-label">
                             Maximum participants
                         </label>
-                        <input asp-for="MaxParticipants" type="number" min="1" class="form-control" />
+                        <input asp-for="MaxParticipants"
+                               type="number"
+                               min="1"
+                               class="form-control" />
                         <span asp-validation-for="MaxParticipants" class="text-danger"></span>
                     </div>
 

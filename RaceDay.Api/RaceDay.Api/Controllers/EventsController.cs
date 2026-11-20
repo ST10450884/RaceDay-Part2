@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using RaceDay.Api.Data;
 using RaceDay.Api.Models;
 using RaceDay.Api.Authorization;
+using RaceDay.Api.Services;
 
 namespace RaceDay.Api.Controllers
 {
@@ -12,13 +13,16 @@ namespace RaceDay.Api.Controllers
     public class EventsController : ControllerBase
     {
         private readonly RaceDayDbContext _context;
+        private readonly BlobStorageService _blobStorage;
 
-        public EventsController(RaceDayDbContext context)
+        public EventsController(
+            RaceDayDbContext context,
+            BlobStorageService blobStorage)
         {
             _context = context;
+            _blobStorage = blobStorage;
         }
 
-        // GET: api/Events/1
         [HttpGet("{id:int}")]
         public async Task<ActionResult<Event>> GetEvent(int id)
         {
@@ -27,17 +31,11 @@ namespace RaceDay.Api.Controllers
                 .FirstOrDefaultAsync(e => e.EventId == id);
 
             if (eventItem == null)
-            {
-                return NotFound(new
-                {
-                    message = $"Event with ID {id} was not found."
-                });
-            }
+                return NotFound(new { message = $"Event with ID {id} was not found." });
 
             return Ok(eventItem);
         }
 
-        // GET: api/Events
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {
@@ -48,7 +46,6 @@ namespace RaceDay.Api.Controllers
             return Ok(events);
         }
 
-        // POST: api/Events
         [SessionAuthorize("Organiser")]
         [HttpPost]
         public async Task<ActionResult<Event>> CreateEvent(Event eventItem)
@@ -62,45 +59,25 @@ namespace RaceDay.Api.Controllers
                 return Unauthorized();
 
             if (eventItem.RegistrationCloseDate >= eventItem.EventDate)
-            {
-                return BadRequest(new
-                {
-                    message = "Registration close date must be before the event date."
-                });
-            }
+                return BadRequest(new { message = "Registration close date must be before the event date." });
 
             if (eventItem.MaxParticipants <= 0)
-            {
-                return BadRequest(new
-                {
-                    message = "Maximum participants must be greater than zero."
-                });
-            }
+                return BadRequest(new { message = "Maximum participants must be greater than zero." });
 
             var validEventTypes = new[] { "Running", "Walking", "Cycling" };
 
             if (!validEventTypes.Contains(eventItem.EventType))
-            {
-                return BadRequest(new
-                {
-                    message = "Event type must be Running, Walking, or Cycling."
-                });
-            }
+                return BadRequest(new { message = "Event type must be Running, Walking, or Cycling." });
 
-            // Assign the logged-in organiser instead of trusting the request.
             eventItem.OrganiserId = organiserId.Value;
             eventItem.CreatedAtUtc = DateTime.UtcNow;
 
             _context.Events.Add(eventItem);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(
-                nameof(GetEvent),
-                new { id = eventItem.EventId },
-                eventItem);
+            return CreatedAtAction(nameof(GetEvent), new { id = eventItem.EventId }, eventItem);
         }
 
-        // PUT: api/Events/1
         [SessionAuthorize("Organiser")]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateEvent(int id, Event updatedEvent)
@@ -113,49 +90,25 @@ namespace RaceDay.Api.Controllers
             var existingEvent = await _context.Events.FindAsync(id);
 
             if (existingEvent == null)
-            {
-                return NotFound(new
-                {
-                    message = $"Event with ID {id} was not found."
-                });
-            }
+                return NotFound(new { message = $"Event with ID {id} was not found." });
 
-            // Ensure the organiser owns this event.
             if (existingEvent.OrganiserId != organiserId.Value)
-            {
                 return Forbid();
-            }
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             if (updatedEvent.RegistrationCloseDate >= updatedEvent.EventDate)
-            {
-                return BadRequest(new
-                {
-                    message = "Registration close date must be before the event date."
-                });
-            }
+                return BadRequest(new { message = "Registration close date must be before the event date." });
 
             if (updatedEvent.MaxParticipants <= 0)
-            {
-                return BadRequest(new
-                {
-                    message = "Maximum participants must be greater than zero."
-                });
-            }
+                return BadRequest(new { message = "Maximum participants must be greater than zero." });
 
             var validEventTypes = new[] { "Running", "Walking", "Cycling" };
 
             if (!validEventTypes.Contains(updatedEvent.EventType))
-            {
-                return BadRequest(new
-                {
-                    message = "Event type must be Running, Walking, or Cycling."
-                });
-            }
+                return BadRequest(new { message = "Event type must be Running, Walking, or Cycling." });
 
-            // Preserve the original owner.
             existingEvent.Name = updatedEvent.Name;
             existingEvent.Description = updatedEvent.Description;
             existingEvent.EventType = updatedEvent.EventType;
@@ -167,12 +120,33 @@ namespace RaceDay.Api.Controllers
             existingEvent.MaxParticipants = updatedEvent.MaxParticipants;
             existingEvent.Status = updatedEvent.Status;
 
+            string? oldPosterUrl = existingEvent.PosterUrl;
+
+            if (!string.IsNullOrWhiteSpace(updatedEvent.PosterUrl))
+                existingEvent.PosterUrl = updatedEvent.PosterUrl;
+
             await _context.SaveChangesAsync();
+
+            if (!string.IsNullOrWhiteSpace(updatedEvent.PosterUrl) &&
+                !string.IsNullOrWhiteSpace(oldPosterUrl) &&
+                oldPosterUrl != updatedEvent.PosterUrl)
+            {
+                try
+                {
+                    string oldBlobName = Path.GetFileName(
+                        oldPosterUrl.Split('?')[0]);
+
+                    await _blobStorage.DeleteAsync(oldBlobName);
+                }
+                catch
+                {
+                    // The event update remains successful if old poster cleanup fails.
+                }
+            }
 
             return NoContent();
         }
 
-        // DELETE: api/Events/1
         [SessionAuthorize("Organiser")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteEvent(int id)
@@ -185,21 +159,30 @@ namespace RaceDay.Api.Controllers
             var eventItem = await _context.Events.FindAsync(id);
 
             if (eventItem == null)
-            {
-                return NotFound(new
-                {
-                    message = $"Event with ID {id} was not found."
-                });
-            }
+                return NotFound(new { message = $"Event with ID {id} was not found." });
 
-            // Ensure the organiser owns this event.
             if (eventItem.OrganiserId != organiserId.Value)
-            {
                 return Forbid();
-            }
+
+            string? posterUrl = eventItem.PosterUrl;
 
             _context.Events.Remove(eventItem);
             await _context.SaveChangesAsync();
+
+            if (!string.IsNullOrWhiteSpace(posterUrl))
+            {
+                try
+                {
+                    string blobName = Path.GetFileName(
+                        posterUrl.Split('?')[0]);
+
+                    await _blobStorage.DeleteAsync(blobName);
+                }
+                catch
+                {
+                    // The event has already been deleted from the database.
+                }
+            }
 
             return NoContent();
         }

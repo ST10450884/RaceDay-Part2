@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace RaceDay.Api.Models;
 
@@ -23,8 +24,9 @@ public class EventCategory
 
     public TimeSpan StartTime { get; set; }
 
+    [JsonIgnore]
     public Event? Event { get; set; }
 
-    public ICollection<Enrolment> Enrolments { get; set; }
-        = new List<Enrolment>();
+    [JsonIgnore]
+    public ICollection<Enrolment> Enrolments { get; set; } = new List<Enrolment>();
 }

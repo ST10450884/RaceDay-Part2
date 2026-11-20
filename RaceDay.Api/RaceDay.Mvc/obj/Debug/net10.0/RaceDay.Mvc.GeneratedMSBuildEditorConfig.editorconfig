@@ -39,16 +39,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/Categories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXENhdGVnb3JpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/CreateCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXENyZWF0ZUNhdGVnb3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/CreateEvent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXENyZWF0ZUV2ZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/DeleteCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXERlbGV0ZUNhdGVnb3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/DeleteEvent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXERlbGV0ZUV2ZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/EditCategory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXEVkaXRDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/EditEvent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXEVkaXRFdmVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/Enrolments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JnYW5pc2VyXEVucm9sbWVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/emeris/Documents/RaceDay/RaceDay-Part2/RaceDay.Api/RaceDay.Mvc/Views/Organiser/Events.cshtml]

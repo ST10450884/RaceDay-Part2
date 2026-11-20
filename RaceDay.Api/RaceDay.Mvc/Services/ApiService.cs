@@ -1,4 +1,5 @@
 ﻿
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace RaceDay.Mvc.Services
@@ -94,6 +95,34 @@ namespace RaceDay.Mvc.Services
         public async Task<HttpResponseMessage> DeleteAsync(string endpoint)
         {
             var request = new HttpRequestMessage(HttpMethod.Delete, endpoint);
+            ForwardApiCookie(request);
+
+            var response = await GetClient().SendAsync(request);
+            SaveApiCookies(response);
+
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> UploadFileAsync(
+            string endpoint,
+            IFormFile file)
+        {
+            using var content = new MultipartFormDataContent();
+
+            await using var stream = file.OpenReadStream();
+
+            using var fileContent = new StreamContent(stream);
+
+            fileContent.Headers.ContentType =
+                new MediaTypeHeaderValue(file.ContentType);
+
+            content.Add(fileContent, "file", file.FileName);
+
+            var request = new HttpRequestMessage(HttpMethod.Post, endpoint)
+            {
+                Content = content
+            };
+
             ForwardApiCookie(request);
 
             var response = await GetClient().SendAsync(request);

@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Text.Json.Serialization;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,7 +15,7 @@ public class Event
 
     [Required, MinLength(2), MaxLength(150)]
     public string Name { get; set; } = string.Empty;
-    
+
     [MaxLength(1000)]
     public string? Description { get; set; }
 
@@ -40,14 +41,17 @@ public class Event
     [Required, MaxLength(20)]
     public string Status { get; set; } = "Draft";
 
+    [MaxLength(500)]
+    public string? PosterUrl { get; set; }
+
     public DateTime CreatedAtUtc { get; set; }
 
     public User? Organiser { get; set; }
 
     public Route? Route { get; set; }
 
-    public ICollection<EventCategory> Categories { get; set; }
-        = new List<EventCategory>();
+    [JsonIgnore]
+    public ICollection<EventCategory> Categories { get; set; } = new List<EventCategory>();
 
     public ICollection<WeatherSnapshot> WeatherSnapshots { get; set; }
         = new List<WeatherSnapshot>();

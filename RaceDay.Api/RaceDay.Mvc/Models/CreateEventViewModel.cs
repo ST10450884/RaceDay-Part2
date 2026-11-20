@@ -41,5 +41,9 @@ namespace RaceDay.Mvc.Models
 
         [Required]
         public string Status { get; set; } = "Draft";
+
+        public IFormFile? PosterFile { get; set; }
+
+        public string? PosterUrl { get; set; }
     }
 }

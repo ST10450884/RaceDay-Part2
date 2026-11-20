@@ -20,6 +20,7 @@ namespace RaceDay.Api.Controllers
         }
 
         // GET: api/Enrolments
+        // Participant views their own enrolments.
         [HttpGet]
         [SessionAuthorize("Participant")]
         public async Task<IActionResult> GetEnrolments()
@@ -69,6 +70,7 @@ namespace RaceDay.Api.Controllers
         }
 
         // GET: api/Enrolments/1
+        // Participant views one of their own enrolments.
         [HttpGet("{id:int}")]
         [SessionAuthorize("Participant")]
         public async Task<IActionResult> GetEnrolment(int id)
@@ -128,6 +130,7 @@ namespace RaceDay.Api.Controllers
         }
 
         // GET: api/Enrolments/my
+        // Participant views their own enrolments.
         [HttpGet("my")]
         [SessionAuthorize("Participant")]
         public async Task<IActionResult> GetMyEnrolments()
@@ -136,6 +139,7 @@ namespace RaceDay.Api.Controllers
         }
 
         // POST: api/Enrolments
+        // Participant creates an enrolment.
         [HttpPost]
         [SessionAuthorize("Participant")]
         public async Task<IActionResult> CreateEnrolment(
@@ -237,9 +241,9 @@ namespace RaceDay.Api.Controllers
             };
 
             _context.Enrolments.Add(enrolment);
+
             await _context.SaveChangesAsync();
 
-            // Return a simple response to prevent circular JSON references.
             var response = new
             {
                 enrolment.EnrolmentId,
@@ -260,6 +264,7 @@ namespace RaceDay.Api.Controllers
         }
 
         // GET: api/Enrolments/organiser
+        // Organiser views enrolments for their own events.
         [HttpGet("organiser")]
         [SessionAuthorize("Organiser")]
         public async Task<IActionResult> GetOrganiserEnrolments()
@@ -292,5 +297,71 @@ namespace RaceDay.Api.Controllers
 
             return Ok(enrolments);
         }
+
+        // PUT: api/Enrolments/1/status
+        // Organiser updates enrolment status for their own events.
+        [HttpPut("{id:int}/status")]
+        [SessionAuthorize("Organiser")]
+        public async Task<IActionResult> UpdateEnrolmentStatus(
+            int id,
+            UpdateEnrolmentStatusRequest request)
+        {
+            var organiserId = HttpContext.Session.GetInt32("UserId");
+
+            if (organiserId == null)
+                return Unauthorized();
+
+            var enrolment = await _context.Enrolments
+                .Include(e => e.Category)
+                .ThenInclude(c => c!.Event)
+                .FirstOrDefaultAsync(e => e.EnrolmentId == id);
+
+            if (enrolment == null)
+            {
+                return NotFound(new
+                {
+                    message = "Enrolment was not found."
+                });
+            }
+
+            // Ensure the organiser owns the event.
+            if (enrolment.Category?.Event?.OrganiserId != organiserId.Value)
+                return Forbid();
+
+            // These values must match the SQL CHECK constraint.
+            var validStatuses = new[]
+            {
+                "Pending",
+                "Confirmed",
+                "Cancelled",
+                "Disqualified"
+            };
+
+            if (string.IsNullOrWhiteSpace(request.Status) ||
+                !validStatuses.Contains(request.Status))
+            {
+                return BadRequest(new
+                {
+                    message = "Status must be Pending, Confirmed, Cancelled, or Disqualified."
+                });
+            }
+
+            enrolment.Status = request.Status;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                enrolment.EnrolmentId,
+                enrolment.Status,
+                message = "Enrolment status updated successfully."
+            });
+        }
+    }
+
+    // Request model for updating enrolment status.
+    public class UpdateEnrolmentStatusRequest
+    {
+        public string Status { get; set; } = "";
     }
 }

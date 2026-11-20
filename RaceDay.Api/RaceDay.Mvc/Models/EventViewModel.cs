@@ -15,5 +15,6 @@ namespace RaceDay.Mvc.Models
         public DateTime RegistrationCloseDate { get; set; }
         public int MaxParticipants { get; set; }
         public string Status { get; set; } = "";
+        public string? PosterUrl { get; set; }
     }
 }

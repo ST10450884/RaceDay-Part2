@@ -1,4 +1,4 @@
-using RaceDay.Mvc.Services;
+
 using RaceDay.Mvc.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -48,8 +48,9 @@ app.UseSession();
 
 app.UseAuthorization();
 
+// Make the RaceDay login page the default landing page
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Auth}/{action=Login}/{id?}");
 
 app.Run();

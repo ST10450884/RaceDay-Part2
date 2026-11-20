@@ -2,32 +2,59 @@
 
 @{
     ViewData["Title"] = "Event Categories";
+    var apiBaseUrl = ViewBag.ApiBaseUrl as string ?? "";
+    var posterUrl = ViewBag.EventPosterUrl as string;
 }
 
-<div class="container mt-4">
+<div class="container py-5">
+
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h2>@ViewBag.EventName</h2>
-            <p class="text-muted">Choose an event category to enrol in.</p>
+            <h1 class="fw-bold">@ViewBag.EventName</h1>
+            <p class="text-muted mb-0">
+                Choose an event category to enrol in.
+            </p>
         </div>
-        <a asp-controller="Participant" asp-action="Events"
-           class="btn btn-outline-secondary">Back to Events</a>
+
+        <a asp-controller="Participant"
+           asp-action="Events"
+           class="btn btn-outline-secondary rounded-pill">
+            Back to Events
+        </a>
     </div>
+
+    @if (!string.IsNullOrWhiteSpace(posterUrl))
+    {
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <img src="@($"{apiBaseUrl}{posterUrl}")"
+                 alt="@ViewBag.EventName event poster"
+                 class="img-fluid w-100"
+                 style="max-height: 400px; object-fit: contain; background: #f8f9fa;" />
+        </div>
+    }
 
     @if (TempData["Success"] != null)
     {
-        <div class="alert alert-success">@TempData["Success"]</div>
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
     }
 
     @if (TempData["Error"] != null)
     {
-        <div class="alert alert-danger">@TempData["Error"]</div>
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
     }
 
     @if (ViewBag.Error != null)
     {
-        <div class="alert alert-danger">@ViewBag.Error</div>
+        <div class="alert alert-danger">
+            @ViewBag.Error
+        </div>
     }
+
+    <h3 class="fw-bold mb-4">Available Categories</h3>
 
     @if (Model == null || !Model.Any())
     {
@@ -37,13 +64,19 @@
     }
     else
     {
-        <div class="row">
+        <div class="row g-4">
+
             @foreach (var category in Model)
             {
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">@category.Name</h5>
+                <div class="col-md-6 col-lg-4">
+
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+
+                        <div class="card-body p-4">
+
+                            <h5 class="fw-bold mb-3">
+                                @category.Name
+                            </h5>
 
                             <p>
                                 <strong>Distance:</strong>
@@ -73,13 +106,17 @@
                             <a asp-controller="Participant"
                                asp-action="Enrol"
                                asp-route-id="@category.CategoryId"
-                               class="btn btn-primary w-100">
+                               class="btn btn-primary w-100 rounded-pill mt-3">
                                 Enrol Now
                             </a>
+
                         </div>
                     </div>
+
                 </div>
             }
+
         </div>
     }
+
 </div>

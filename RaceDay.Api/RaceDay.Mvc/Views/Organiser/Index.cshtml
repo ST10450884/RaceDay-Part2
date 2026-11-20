@@ -4,7 +4,8 @@
 
 <div class="container py-5">
 
-    <div class="p-4 p-md-5 mb-4 rounded-4 text-white"
+    <!-- Dashboard Header -->
+    <div class="p-4 p-md-5 mb-5 rounded-4 text-white"
          style="background: linear-gradient(120deg, #102b46, #087e8b);">
 
         <h1 class="display-5 fw-bold">Organiser Dashboard</h1>
@@ -15,16 +16,27 @@
         </p>
     </div>
 
+    <!-- Management Overview -->
     <h2 class="fw-bold mb-4">Management Overview</h2>
 
     <div class="row g-4">
 
-        <div class="col-md-4">
+        <!-- Events -->
+        <div class="col-md-6 col-lg-3">
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-body p-4">
+                    <div class="mb-3 text-primary">
+                        <i class="bi bi-calendar-event fs-1"></i>
+                    </div>
+
                     <h4 class="fw-bold">Events</h4>
-                    <p class="text-muted">Create, view and manage sporting events.</p>
-                    <a asp-controller="Organiser" asp-action="Events"
+
+                    <p class="text-muted">
+                        Create, view and manage sporting events and event posters.
+                    </p>
+
+                    <a asp-controller="Organiser"
+                       asp-action="Events"
                        class="btn btn-primary rounded-pill">
                         Manage Events
                     </a>
@@ -32,12 +44,22 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <!-- Enrolments -->
+        <div class="col-md-6 col-lg-3">
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-body p-4">
+                    <div class="mb-3 text-success">
+                        <i class="bi bi-people fs-1"></i>
+                    </div>
+
                     <h4 class="fw-bold">Enrolments</h4>
-                    <p class="text-muted">View participants registered for your events.</p>
-                    <a asp-controller="Organiser" asp-action="Enrolments"
+
+                    <p class="text-muted">
+                        View participants registered for your sporting events.
+                    </p>
+
+                    <a asp-controller="Organiser"
+                       asp-action="Enrolments"
                        class="btn btn-primary rounded-pill">
                         View Enrolments
                     </a>
@@ -45,12 +67,22 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <!-- Results -->
+        <div class="col-md-6 col-lg-3">
             <div class="card border-0 shadow-sm rounded-4 h-100">
                 <div class="card-body p-4">
+                    <div class="mb-3 text-warning">
+                        <i class="bi bi-trophy fs-1"></i>
+                    </div>
+
                     <h4 class="fw-bold">Results</h4>
-                    <p class="text-muted">Manage race results and participant performance.</p>
-                    <a asp-controller="Organiser" asp-action="Results"
+
+                    <p class="text-muted">
+                        Manage race results and participant performance.
+                    </p>
+
+                    <a asp-controller="Organiser"
+                       asp-action="Results"
                        class="btn btn-primary rounded-pill">
                         Manage Results
                     </a>
@@ -58,11 +90,36 @@
             </div>
         </div>
 
+        <!-- Categories -->
+        <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <div class="mb-3 text-info">
+                        <i class="bi bi-tags fs-1"></i>
+                    </div>
+
+                    <h4 class="fw-bold">Categories</h4>
+
+                    <p class="text-muted">
+                        Create and manage race categories for your events.
+                    </p>
+
+                    <a asp-controller="Organiser"
+                       asp-action="Categories"
+                       class="btn btn-primary rounded-pill">
+                        Manage Categories
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <!-- Logout -->
     <div class="mt-5">
-        <a asp-controller="Auth" asp-action="Logout"
-           class="btn btn-outline-danger rounded-pill">
+        <a asp-controller="Auth"
+           asp-action="Logout"
+           class="btn btn-outline-danger rounded-pill px-4">
             Logout
         </a>
     </div>

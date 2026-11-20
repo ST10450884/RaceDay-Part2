@@ -18,44 +18,136 @@ public class ResultsController : ControllerBase
         _context = context;
     }
 
-    // GET: api/Results
-    [SessionAuthorize]
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Result>>> GetResults()
+    private static readonly string[] ValidStatuses =
     {
-        var results = await _context.Results
+        "Finished",
+        "DNF",
+        "DNS",
+        "Disqualified"
+    };
+
+    private string? GetRole()
+    {
+        return HttpContext.Session.GetString("UserRole");
+    }
+
+    private int? GetUserId()
+    {
+        return HttpContext.Session.GetInt32("UserId");
+    }
+
+    private IQueryable<Result> ResultsWithDetails()
+    {
+        return _context.Results
             .AsNoTracking()
+            .Include(r => r.Enrolment)
+                .ThenInclude(e => e!.Participant)
+            .Include(r => r.Enrolment)
+                .ThenInclude(e => e!.Category)
+                    .ThenInclude(c => c!.Event);
+    }
+
+    private static object ToResultResponse(Result r)
+    {
+        return new
+        {
+            r.ResultId,
+            r.EnrolmentId,
+            r.FinishTimeSeconds,
+            r.OverallPosition,
+            r.CategoryPosition,
+            r.Status,
+            r.RecordedAtUtc,
+
+            ParticipantId = r.Enrolment?.ParticipantId,
+            ParticipantEmail = r.Enrolment?.Participant?.Email,
+
+            CategoryId = r.Enrolment?.CategoryId,
+            CategoryName = r.Enrolment?.Category?.Name,
+
+            EventId = r.Enrolment?.Category?.EventId,
+            EventName = r.Enrolment?.Category?.Event?.Name
+        };
+    }
+
+    // GET: api/Results
+    // Organisers see their own results.
+    // Participants see only their own results.
+    [HttpGet]
+    [SessionAuthorize]
+    public async Task<IActionResult> GetResults()
+    {
+        var userId = GetUserId();
+        var role = GetRole();
+
+        if (userId == null)
+            return Unauthorized();
+
+        var query = ResultsWithDetails();
+
+        if (role == "Organiser")
+        {
+            query = query.Where(r =>
+                r.Enrolment!.Category!.Event!.OrganiserId == userId);
+        }
+        else if (role == "Participant")
+        {
+            query = query.Where(r =>
+                r.Enrolment!.ParticipantId == userId);
+        }
+        else
+        {
+            return Forbid();
+        }
+
+        var results = await query
+            .OrderBy(r => r.OverallPosition)
             .ToListAsync();
 
-        return Ok(results);
+        return Ok(results.Select(ToResultResponse));
     }
 
     // GET: api/Results/1
-    [SessionAuthorize]
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Result>> GetResult(int id)
+    [SessionAuthorize]
+    public async Task<IActionResult> GetResult(int id)
     {
-        var result = await _context.Results
-            .AsNoTracking()
+        var userId = GetUserId();
+        var role = GetRole();
+
+        if (userId == null)
+            return Unauthorized();
+
+        var result = await ResultsWithDetails()
             .FirstOrDefaultAsync(r => r.ResultId == id);
 
         if (result == null)
+            return NotFound(new { message = "Result was not found." });
+
+        if (role == "Organiser" &&
+            result.Enrolment?.Category?.Event?.OrganiserId != userId)
         {
-            return NotFound(new
-            {
-                message = $"Result with ID {id} was not found."
-            });
+            return Forbid();
         }
 
-        return Ok(result);
+        if (role == "Participant" &&
+            result.Enrolment?.ParticipantId != userId)
+        {
+            return Forbid();
+        }
+
+        if (role != "Organiser" && role != "Participant")
+            return Forbid();
+
+        return Ok(ToResultResponse(result));
     }
 
     // POST: api/Results
     [HttpPost]
     [SessionAuthorize("Organiser")]
-    public async Task<ActionResult<Result>> CreateResult(Result result)
+    public async Task<IActionResult> CreateResult(Result result)
     {
-        var organiserId = HttpContext.Session.GetInt32("UserId");
+        var organiserId = GetUserId();
 
         if (organiserId == null)
             return Unauthorized();
@@ -67,18 +159,25 @@ public class ResultsController : ControllerBase
 
         if (enrolment?.Category?.Event == null)
         {
-            return NotFound(new { message = "Enrolment was not found." });
+            return NotFound(new
+            {
+                message = "Enrolment was not found."
+            });
         }
 
-        if (enrolment.Category.Event.OrganiserId != organiserId.Value)
-        {
+        if (enrolment.Category.Event.OrganiserId != organiserId)
             return Forbid();
+
+        if (enrolment.Status != "Confirmed")
+        {
+            return BadRequest(new
+            {
+                message = "Only confirmed enrolments can receive results."
+            });
         }
 
-        var resultExists = await _context.Results
-            .AnyAsync(r => r.EnrolmentId == result.EnrolmentId);
-
-        if (resultExists)
+        if (await _context.Results.AnyAsync(
+            r => r.EnrolmentId == result.EnrolmentId))
         {
             return Conflict(new
             {
@@ -96,24 +195,39 @@ public class ResultsController : ControllerBase
             });
         }
 
+        if (!ValidStatuses.Contains(result.Status))
+        {
+            return BadRequest(new
+            {
+                message = "Status must be Finished, DNF, DNS, or Disqualified."
+            });
+        }
+
         result.ResultId = 0;
+        result.Status = result.Status.Trim();
         result.RecordedAtUtc = DateTime.UtcNow;
+        result.Enrolment = null;
 
         _context.Results.Add(result);
         await _context.SaveChangesAsync();
 
+        var created = await ResultsWithDetails()
+            .FirstAsync(r => r.ResultId == result.ResultId);
+
         return CreatedAtAction(
             nameof(GetResult),
             new { id = result.ResultId },
-            result);
+            ToResultResponse(created));
     }
 
     // PUT: api/Results/1
     [HttpPut("{id:int}")]
     [SessionAuthorize("Organiser")]
-    public async Task<IActionResult> UpdateResult(int id, Result updatedResult)
+    public async Task<IActionResult> UpdateResult(
+        int id,
+        Result updatedResult)
     {
-        var organiserId = HttpContext.Session.GetInt32("UserId");
+        var organiserId = GetUserId();
 
         if (organiserId == null)
             return Unauthorized();
@@ -125,17 +239,10 @@ public class ResultsController : ControllerBase
             .FirstOrDefaultAsync(r => r.ResultId == id);
 
         if (result == null)
-        {
             return NotFound(new { message = "Result was not found." });
-        }
 
-        if (result.Enrolment?.Category?.Event?.OrganiserId != organiserId.Value)
-        {
-            return StatusCode(403, new
-            {
-                message = "You can only update results for your own events."
-            });
-        }
+        if (result.Enrolment?.Category?.Event?.OrganiserId != organiserId)
+            return Forbid();
 
         if (updatedResult.FinishTimeSeconds < 0 ||
             updatedResult.OverallPosition < 1 ||
@@ -147,10 +254,18 @@ public class ResultsController : ControllerBase
             });
         }
 
+        if (!ValidStatuses.Contains(updatedResult.Status))
+        {
+            return BadRequest(new
+            {
+                message = "Status must be Finished, DNF, DNS, or Disqualified."
+            });
+        }
+
         result.FinishTimeSeconds = updatedResult.FinishTimeSeconds;
         result.OverallPosition = updatedResult.OverallPosition;
         result.CategoryPosition = updatedResult.CategoryPosition;
-        result.Status = updatedResult.Status;
+        result.Status = updatedResult.Status.Trim();
         result.RecordedAtUtc = DateTime.UtcNow;
 
         await _context.SaveChangesAsync();
@@ -163,7 +278,7 @@ public class ResultsController : ControllerBase
     [SessionAuthorize("Organiser")]
     public async Task<IActionResult> DeleteResult(int id)
     {
-        var organiserId = HttpContext.Session.GetInt32("UserId");
+        var organiserId = GetUserId();
 
         if (organiserId == null)
             return Unauthorized();
@@ -175,25 +290,14 @@ public class ResultsController : ControllerBase
             .FirstOrDefaultAsync(r => r.ResultId == id);
 
         if (result == null)
-        {
-            return NotFound(new
-            {
-                message = "Result was not found."
-            });
-        }
+            return NotFound(new { message = "Result was not found." });
 
-        if (result.Enrolment?.Category?.Event?.OrganiserId != organiserId.Value)
-        {
-            return StatusCode(403, new
-            {
-                message = "You can only delete results for your own events."
-            });
-        }
+        if (result.Enrolment?.Category?.Event?.OrganiserId != organiserId)
+            return Forbid();
 
         _context.Results.Remove(result);
         await _context.SaveChangesAsync();
 
         return NoContent();
     }
-
 }
