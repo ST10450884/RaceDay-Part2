@@ -424,3 +424,39 @@ The Independent Institute of Education (The IIE), 2026. *Harvard–Anglia style 
 ---
 
 *This README documents the intended operation and current project structure. Verify the final implementation, test results, workflow status, repository URL and demonstration video before submission.*
+
+
+## Part 3 finishing additions
+
+This repository includes the organiser result-management pages and participant results page, a .NET 10 GitHub Actions workflow, API/MVC Dockerfiles, Docker Compose configuration, and the `AddEventPosterUrl` migration.
+
+### Local configuration
+
+- Keep the API SQL Server connection string in API User Secrets or environment variables.
+- Keep the Azure Storage connection string in API User Secrets or environment variables (`AzureStorage:ConnectionString`). Never commit either secret.
+- The API expects `AzureStorage:ContainerName` to be `event-images`.
+- MVC expects `ApiSettings:BaseUrl` to point to the API, including a trailing slash.
+- Run API and MVC together using the existing Visual Studio multiple-startup-project configuration.
+
+### Docker
+
+1. Install Docker Desktop and ensure it is running.
+2. Copy `.env.example` to `.env`.
+3. Fill in `RACEDAY_CONNECTION_STRING` and `AZURE_STORAGE_CONNECTION_STRING` with your own values.
+4. Ensure SQL Server TCP/IP is enabled and SQL Server accepts connections from Docker. For SQL Server on the Windows host, use `host.docker.internal,1433` in the connection string.
+5. Run `docker compose up --build`.
+6. Open MVC at `http://localhost:7277`; API is at `http://localhost:7029`.
+
+The Docker Compose file uses HTTP for local container testing. For public deployment, put the services behind HTTPS termination (for example, a reverse proxy) and review cookie, CORS, and session settings before publishing.
+
+### CI
+
+The workflow at `.github/workflows/dotnet.yml` restores and builds the API and MVC projects and runs the test project on pushes and pull requests to `main` or `master`.
+
+### Database migration
+
+`AddEventPosterUrl` adds the nullable `PosterUrl` column to the existing `Events` table. For a database that already has this column and an existing migration history, do not run the migration again manually. Confirm the migration history before applying it to another database.
+
+### Manual verification still required
+
+After pulling these changes, build the full solution in Visual Studio, run the tests, test result creation/edit/deletion as an organiser, test participant result visibility, and test the Docker deployment using your own local SQL Server and Azure credentials.
