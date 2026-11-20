@@ -1,0 +1,23 @@
+﻿@model RaceDay.Mvc.Models.ResultViewModel
+@using RaceDay.Mvc.Models
+@{
+    ViewData["Title"] = "Record Result"; var enrolments = ViewBag.Enrolments as List<OrganiserEnrolmentViewModel> ?? new();
+}
+<div class="container py-5" style="max-width:800px">
+    <div class="mb-4"><h1 class="fw-bold">Record Race Result</h1><p class="text-muted">Only confirmed enrolments are available.</p></div>
+    <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4">
+            <form asp-action="CreateResult" method="post">
+                @Html.AntiForgeryToken()<div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div class="mb-3"><label class="form-label" for="EnrolmentId">Participant enrolment</label><select asp-for="EnrolmentId" class="form-select" required><option value="">Select confirmed enrolment</option>@foreach(var e in enrolments){
+                    <option value="@e.EnrolmentId">#@e.EnrolmentId — @e.EventName / @e.CategoryName — Participant #@e.ParticipantId</option>
+                }
+            </select><span asp-validation-for="EnrolmentId" class="text-danger"></span></div>
+            <div class="mb-3"><label asp-for="FinishTimeSeconds" class="form-label">Finish time (seconds)</label><input asp-for="FinishTimeSeconds" type="number" min="0" class="form-control" /><span asp-validation-for="FinishTimeSeconds" class="text-danger"></span></div>
+            <div class="row"><div class="col-md-6 mb-3"><label asp-for="OverallPosition" class="form-label">Overall position</label><input asp-for="OverallPosition" type="number" min="1" class="form-control" /></div><div class="col-md-6 mb-3"><label asp-for="CategoryPosition" class="form-label">Category position</label><input asp-for="CategoryPosition" type="number" min="1" class="form-control" /></div></div>
+            <div class="mb-4"><label asp-for="Status" class="form-label">Result status</label><select asp-for="Status" class="form-select"><option>Finished</option><option>DNF</option><option>DNS</option><option>Disqualified</option></select></div>
+            <div class="d-flex gap-2"><button type="submit" class="btn btn-primary rounded-pill">Save Result</button><a asp-action="Results" class="btn btn-outline-secondary rounded-pill">Cancel</a></div>
+        </form>
+    </div>
+</div>
+</div>

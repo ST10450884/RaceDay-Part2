@@ -1,0 +1,51 @@
+﻿@model List<RaceDay.Mvc.Models.ResultViewModel>
+@{
+    ViewData["Title"] = "Manage Results";
+}
+<div class="container py-5">
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+        <div><h1 class="fw-bold">Manage Race Results</h1><p class="text-muted">Record and manage results for confirmed participants in your events.</p></div>
+        <div class="d-flex gap-2"><a asp-action="Index" class="btn btn-outline-secondary rounded-pill">Dashboard</a><a asp-action="CreateResult" class="btn btn-primary rounded-pill">Record Result</a></div>
+    </div>
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-info">No race results have been recorded yet.</div>
+    }
+    else
+    {
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light"><tr><th>Participant</th><th>Event</th><th>Category</th><th>Time</th><th>Overall</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
+                    <tbody>
+                        @foreach (var result in Model)
+                        {
+                            <tr>
+                                <td>@(string.IsNullOrWhiteSpace(result.ParticipantEmail) ? $"Participant #{result.ParticipantId}" : result.ParticipantEmail)</td>
+                                <td>@result.EventName</td>
+                                <td>@result.CategoryName</td>
+                                <td>@(result.FinishTimeSeconds.HasValue ? TimeSpan.FromSeconds(result.FinishTimeSeconds.Value).ToString(@"hh\:mm\:ss") : "—")</td>
+                                <td>@(result.OverallPosition?.ToString() ?? "—")</td>
+                                <td>@(result.CategoryPosition?.ToString() ?? "—")</td>
+                                <td><span class="badge bg-secondary">@result.Status</span></td>
+                                <td><div class="d-flex gap-2"><a asp-action="EditResult" asp-route-id="@result.ResultId" class="btn btn-sm btn-outline-primary">Edit</a><a asp-action="DeleteResult" asp-route-id="@result.ResultId" class="btn btn-sm btn-outline-danger">Delete</a></div></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
